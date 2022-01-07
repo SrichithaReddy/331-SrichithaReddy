@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML Forms</title>    
+    <header style="font-size: 14pt; color:white; background-color: black; text-align: center;display:inline">HTML Forms</header>
+    <hr><div id="logger"></div>
+</head>
+<script>
+    var logg = document.getElementById("logger");
+    clientSideFormProcessor = () => 
+    {
+        let formHandle = document.forms["userProfileForm"];
+        logg.innerHTML=
+        `LOGGER: First Name ${formHandle.firstName.value}
+        <br>Password : ${formHandle.mypassword.value}`;
+    
+    function test_str() 
+    {
+            var logg;
+            var str =document.getElementById("t1").value;
+            if (str.match(/[a-z]/g) && str.match(/[A-Z]/g) && str.match( /[0-9]/g) && str.match( /[^a-zA-Z\d]/g) && str.length >= 8)
+                logg = "TRUE";
+            else
+                logg = "FALSE";
+            document.getElementById("t2").value = logg;
+  
+        }
+    }
+
+</script>
+<body>
+    <hr><br>
+
+    <form name="userProfileForm" action="form-processor.py" method="POST" >
+        <br>First name:  <input type=text name="firstName">
+       <br>Password:  <input type=password name="mypassword">
+       <br><br>
+       <input type="submit" onclick="clientSideFormProcessor(); return false;">
+    </form>
+</body>
+</html>
